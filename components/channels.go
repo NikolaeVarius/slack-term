@@ -24,9 +24,10 @@ const (
 // Channels is the definition of a Channels component
 type Channels struct {
 	List            *termui.List
-	SelectedChannel int // index of which channel is selected from the List
-	Offset          int // from what offset are channels rendered
-	CursorPosition  int // the y position of the 'cursor'
+	SelectedChannel int  // index of which channel is selected from the List
+	Offset          int  // from what offset are channels rendered
+	CursorPosition  int  // the y position of the 'cursor'
+	Hidden          bool // check if channel is hidden or not
 }
 
 // CreateChannels is the constructor for the Channels component
@@ -326,6 +327,11 @@ func (c *Channels) SetPresence(svc *service.SlackService, userID string, presenc
 			c.List.Items[index], IconOnline, IconOffline, 1,
 		)
 	}
+
+}
+
+// Sets a Hidden value to filter it from the slack overview
+func (c *Channels) SetHiddenStatus() {
 
 }
 
